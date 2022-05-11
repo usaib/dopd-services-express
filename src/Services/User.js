@@ -1,10 +1,9 @@
-import { user } from "../models";
-import { user_vendors } from "../models";
 import crypto from "crypto";
+import { users } from "../models";
 
 export const getAllUsers = async (params) => {
 	try {
-		const users = await user.findAndCountAll({
+		const data = await users.findAndCountAll({
 			order: [
 				["createdAt", "DESC"],
 				["name", "ASC"]
@@ -14,7 +13,7 @@ export const getAllUsers = async (params) => {
 		});
 		return {
 			success: true,
-			data: users
+			data: data
 		};
 	} catch (error) {
 		return {
@@ -26,14 +25,14 @@ export const getAllUsers = async (params) => {
 
 export const getProfile = async (params) => {
 	try {
-		const users = await user.findAll({
+		const data = await users.findAll({
 			where: {
 				id: params.id
 			}
 		});
 		return {
 			success: true,
-			data: users
+			data: data
 		};
 	} catch (error) {
 		return {
@@ -51,17 +50,10 @@ export const create = async (params) => {
 			.update(params.password)
 			.digest("hex");
 		params.password = reqPass;
-		const Users = await user.create({
+		const Users = await users.create({
 			...params
 		});
-		if (params.vendor) {
-			const userVendors = await user_vendors.create({
-				userId: Users.id,
-				vendorId: params.vendor,
-				createdAt: new Date(),
-				updatedAt: new Date()
-			});
-		}
+
 		return {
 			success: true,
 			data: Users.id
@@ -76,14 +68,14 @@ export const create = async (params) => {
 
 export const remove = async (params) => {
 	try {
-		const users = await user.destroy({
+		const data = await users.destroy({
 			where: {
 				id: params.id
 			}
 		});
 		return {
 			success: true,
-			data: users
+			data
 		};
 	} catch (error) {
 		return {
@@ -97,7 +89,7 @@ export const update = async (params) => {
 	try {
 		console.log(params);
 
-		const Users = await user.update(
+		const data = await users.update(
 			{ ...params },
 			{
 				where: {
@@ -108,7 +100,7 @@ export const update = async (params) => {
 
 		return {
 			success: true,
-			data: Users
+			data
 		};
 	} catch (error) {
 		return {

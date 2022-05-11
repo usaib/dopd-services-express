@@ -47,7 +47,7 @@ module.exports = {
 					userId: 2,
 					type: "Smart",
 					dateTime: new Date(),
-					status: "completed",
+					status: "cancelled",
 					createdAt: new Date(),
 					updatedAt: new Date()
 				}

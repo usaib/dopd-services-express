@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
 				}
 			},
 			type: DataTypes.ENUM("In-person", "Online", "Smart"),
-			status: DataTypes.ENUM("pending", "confirmed", "completed")
+			status: DataTypes.ENUM("pending", "confirmed", "completed", "cancelled")
 		},
 		{}
 	);

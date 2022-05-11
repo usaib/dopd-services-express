@@ -48,8 +48,6 @@ db.Sequelize = Sequelize;
 //= ==============================
 // Define all relationships here below
 //= ==============================
-// db.User.hasMany(db.Role);
-// db.Role.belongsTo(db.User);
 
 db.users.hasMany(db.tokens);
 db.tokens.belongsTo(db.users);
@@ -57,5 +55,7 @@ db.users.hasMany(db.appointment_histories);
 db.appointment_histories.belongsTo(db.doctors);
 db.doctors.hasMany(db.appointment_histories);
 db.appointment_histories.belongsTo(db.users);
+db.appointment_histories.hasMany(db.diagnosed_disease_details);
+db.diagnosed_disease_details.belongsTo(db.appointment_histories);
 
 module.exports = db;

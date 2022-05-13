@@ -30,3 +30,29 @@ export const getAppointments = async (params) => {
 		};
 	}
 };
+export const create = async (params) => {
+	try {
+		console.log(params);
+		const doctor = await doctors.findAll({
+			where: {
+				name: params.doctorName
+			}
+		});
+		params.doctorId = doctor[0].id;
+		delete params.doctorName;
+		console.log(params);
+		const data = await appointment_histories.create({
+			...params
+		});
+
+		return {
+			success: true,
+			data: data.id
+		};
+	} catch (error) {
+		return {
+			success: false,
+			data: error
+		};
+	}
+};

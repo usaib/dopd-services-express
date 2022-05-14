@@ -23,6 +23,15 @@ module.exports = {
 			experience: {
 				type: Sequelize.STRING
 			},
+			imageUrl: {
+				type: Sequelize.STRING
+			},
+			gender: {
+				type: Sequelize.ENUM("Male", "Female")
+			},
+			rating: {
+				type: Sequelize.STRING
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE

@@ -10,5 +10,9 @@ const router = express.Router();
 //= ===============================
 
 router.post("/create", DiagnosedDiseaseController.create);
+router.post(
+	"/getDiagnosedDiseaseDetails",
+	DiagnosedDiseaseController.getDiagnosedDiseaseDetails
+);
 
 module.exports = router;

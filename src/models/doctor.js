@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
 			specialization: DataTypes.STRING,
 			qualification: DataTypes.STRING,
 			experience: DataTypes.STRING,
-			email: DataTypes.STRING
+			email: DataTypes.STRING,
+			imageUrl: DataTypes.STRING,
+			gender: DataTypes.ENUM("Male", "Female"),
+			rating: DataTypes.STRING
 		},
 		{}
 	);

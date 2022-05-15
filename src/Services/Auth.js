@@ -1,13 +1,13 @@
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
-import { user } from "../models";
-import { token } from "../models";
+import { users } from "../models";
+import { tokens } from "../models";
 
 export const SignIn = async (params) => {
 	try {
 		let response = {};
 		const { email, password } = params;
-		const User = await user.findOne({
+		const User = await users.findOne({
 			where: { email: email }
 		});
 
@@ -37,7 +37,7 @@ export const SignIn = async (params) => {
 			process.env.SECRET
 		);
 		console.log(Token);
-		await token.create({ userId: User.id, token: Token });
+		await tokens.create({ userId: User.id, token: Token });
 
 		delete User.dataValues.password;
 		User.dataValues.token = Token;
@@ -54,7 +54,7 @@ export const SignIn = async (params) => {
 
 export const SignOut = async (params) => {
 	try {
-		const User = await user.findOne({
+		const User = await users.findOne({
 			where: { email: params.email }
 		});
 		let response = await token.destroy({

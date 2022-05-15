@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 
 import bodyParser from "body-parser";
 import cors from "cors";
-
 import Auth from "./src/routes/auth";
 import User from "./src/routes/user";
 import Appointment from "./src/routes/appointment";

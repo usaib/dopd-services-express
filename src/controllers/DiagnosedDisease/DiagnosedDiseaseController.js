@@ -24,6 +24,31 @@ export const create = async (request, response) => {
 	}
 };
 
+export const update = async (request, response) => {
+	try {
+		const resp = await Service.update(request.body);
+		if (resp.success) {
+			response.status(200).json({
+				message: "Successfully updated diagnosed disease record",
+				success: true,
+				data: resp
+			});
+		} else {
+			console.log("Error resp", resp);
+			response.status(200).json({
+				message: "Failed to update diagnosed disease record",
+				success: false,
+				data: resp
+			});
+		}
+	} catch (e) {
+		console.log(e);
+		response.status(400).json({
+			...e
+		});
+	}
+};
+
 export const getDiagnosedDiseaseDetails = async (request, response) => {
 	try {
 		const resp = await Service.getDiagnosedDiseaseDetails(request.body);

@@ -19,6 +19,31 @@ export const create = async (params) => {
 	}
 };
 
+export const update = async (params) => {
+	try {
+		console.log(params);
+
+		const data = await diagnosed_disease_details.update(
+			{ ...params },
+			{
+				where: {
+					appointmentId: params.id
+				}
+			}
+		);
+
+		return {
+			success: true,
+			data
+		};
+	} catch (error) {
+		return {
+			success: false,
+			data: error
+		};
+	}
+};
+
 export const getDiagnosedDiseaseDetails = async (params) => {
 	console.log(params, "prams");
 	try {

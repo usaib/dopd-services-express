@@ -10,6 +10,8 @@ const router = express.Router();
 //= ===============================
 
 router.post("/create", DiagnosedDiseaseController.create);
+router.post("/update", DiagnosedDiseaseController.update);
+
 router.post(
 	"/getDiagnosedDiseaseDetails",
 	DiagnosedDiseaseController.getDiagnosedDiseaseDetails

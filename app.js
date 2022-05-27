@@ -8,6 +8,7 @@ import User from "./src/routes/user";
 import Appointment from "./src/routes/appointment";
 import diagnosedDisease from "./src/routes/diagnosedDisease";
 import doctor from "./src/routes/doctor";
+import doctorAvailability from "./src/routes/doctorAvailability";
 
 dotenv.config();
 require("./src/config/sequelize");
@@ -26,5 +27,6 @@ app.use("/user", User);
 app.use("/appointment", Appointment);
 app.use("/diagnosedDisease", diagnosedDisease);
 app.use("/doctor", doctor);
+app.use("/doctorAvailability", doctorAvailability);
 
 module.exports = app;

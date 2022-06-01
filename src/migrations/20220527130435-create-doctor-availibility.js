@@ -37,6 +37,6 @@ module.exports = {
 		});
 	},
 	down: (queryInterface, Sequelize) => {
-		return queryInterface.dropTable("Doctor_Availibilities");
+		return queryInterface.dropTable("doctor_availabilities");
 	}
 };

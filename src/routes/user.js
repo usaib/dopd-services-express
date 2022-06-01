@@ -21,7 +21,7 @@ const upload = multer({ storage });
 // All routes
 //= ===============================
 
-router.post("/getAllUsers", apiAuth, UserController.allUsers);
+router.post("/getAllUsers", UserController.allUsers);
 router.post("/me", UserController.getProfile);
 router.post("/createUser", apiAuth, UserController.create);
 router.post("/deleteUser", apiAuth, UserController.remove);

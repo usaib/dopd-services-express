@@ -46,6 +46,6 @@ module.exports = {
 		});
 	},
 	down: (queryInterface, Sequelize) => {
-		return queryInterface.dropTable("appointmentHistories");
+		return queryInterface.dropTable("appointment_histories");
 	}
 };

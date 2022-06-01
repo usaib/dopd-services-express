@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 			},
 			weekday: DataTypes.STRING,
 			startTime: DataTypes.TIME,
-			endtime: DataTypes.TIME
+			endTime: DataTypes.TIME
 		},
 		{}
 	);

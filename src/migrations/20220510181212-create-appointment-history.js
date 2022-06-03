@@ -35,6 +35,9 @@ module.exports = {
 			status: {
 				type: Sequelize.ENUM("pending", "confirmed", "completed", "cancelled")
 			},
+			appointmentLink: {
+				type: Sequelize.STRING
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE

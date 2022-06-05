@@ -1,6 +1,7 @@
 import { appointment_histories } from "../models";
 import { doctors } from "../models";
 import { users } from "../models";
+import createEventForAppointment from "../helpers/calender";
 
 export const getAppointments = async (params) => {
 	try {
@@ -56,4 +57,37 @@ export const create = async (params) => {
 			data: error
 		};
 	}
+};
+
+export const createOnlineAppointment = async (params) => {
+	console.log(params);
+	const data = createEventForAppointment({ id: params.id });
+	return {
+		success: true,
+		data: data
+	};
+	// try {
+	// 	if (params.doctorName) {
+	// 		const doctor = await doctors.findAll({
+	// 			where: {
+	// 				name: params.doctorName
+	// 			}
+	// 		});
+	// 		params.doctorId = doctor[0].id;
+	// 		delete params.doctorName;
+	// 	}
+	// 	console.log(params);
+	// 	const data = await appointment_histories.create({
+	// 		...params
+	// 	});
+	// 	return {
+	// 		success: true,
+	// 		data: data.id
+	// 	};
+	// } catch (error) {
+	// 	return {
+	// 		success: false,
+	// 		data: error
+	// 	};
+	// }
 };

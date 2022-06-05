@@ -11,5 +11,9 @@ const router = express.Router();
 
 router.post("/getAppointments", AppointmentController.getAppointments);
 router.post("/create", AppointmentController.create);
+router.post(
+	"/createOnlineAppointment",
+	AppointmentController.createOnlineAppointment
+);
 
 module.exports = router;

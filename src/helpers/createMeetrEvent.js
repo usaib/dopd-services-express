@@ -2,28 +2,27 @@ const { google } = require("googleapis");
 import dotenv from "dotenv";
 const fs = require("fs");
 const readline = require("readline");
-import { appointment_histories } from "../models";
 
 const SCOPES = process.env.SCOPES;
 
 dotenv.config();
 
-module.exports = async function ({
+module.exports = async function (
 	attendeesEmails = [
 		{ email: "shehzerabbasi621@gmail.com" },
 		{ email: "noors.mah.coll@gmail.com" },
 		{ email: "syedainsharahnaveed@gmail.com" }
 	],
 	event = {
-		summary: "Testing Online Appointment",
+		summary: "Online Appointment",
 		location: "Virtual / Google Meet",
 		description: "With Doctor Anees Allana",
 		start: {
-			dateTime: "2022-06-05T10:00:00",
+			dateTime: "2022-06-05T07:00:00",
 			timeZone: "America/Los_Angeles"
 		},
 		end: {
-			dateTime: "2022-06-05T11:00:00",
+			dateTime: "2022-06-05T08:00:00",
 			timeZone: "America/Los_Angeles"
 		},
 		attendees: attendeesEmails,
@@ -42,15 +41,14 @@ module.exports = async function ({
 				requestId: "online-appointment-dopd"
 			}
 		}
-	},
-	id
-}) {
+	}
+) {
 	// Load client secrets from a local file.
 	fs.readFile(process.env.SECRET_FILE, (err, content) => {
 		if (err) return console.log("Error loading client secret file:", err);
 		// Authorize a client with credentials, then call the Google Calendar API.
-		console.log(JSON.parse(content));
-		authorize(JSON.parse(content), insertEvent);
+
+		return authorize(JSON.parse(content), insertEvent);
 	});
 
 	/**
@@ -60,7 +58,7 @@ module.exports = async function ({
 	 * @param {function} callback The callback to call with the authorized client.
 	 */
 	function authorize(credentials, callback) {
-		const { client_secret, client_id, redirect_uris } = credentials.web;
+		const { client_secret, client_id } = credentials.web;
 		const oAuth2Client = new google.auth.OAuth2(
 			client_id,
 			client_secret,
@@ -68,12 +66,14 @@ module.exports = async function ({
 		);
 
 		// Check if we have previously stored a token.
-		fs.readFile(process.env.TOKEN_PATH, (err, token) => {
+		const data = fs.readFile(process.env.TOKEN_PATH, (err, token) => {
 			console.log(err);
 			if (err) return getAccessToken(oAuth2Client, callback);
 			oAuth2Client.setCredentials(JSON.parse(token));
-			callback(oAuth2Client, id);
+			return callback(oAuth2Client);
 		});
+		console.log("Authdata", data);
+		return data;
 	}
 	/**
 	 * Get and store new token after prompting for user authorization, and then
@@ -136,9 +136,10 @@ module.exports = async function ({
 		);
 	}
 
-	const insertEvent = (auth, id) => {
+	const insertEvent = (auth) => {
 		const calendar = google.calendar({ version: "v3", auth });
 		console.log("it is", process.env.GOOGLE_CALENDAR_ID, auth, event);
+		return event;
 		const response = calendar.events.insert(
 			{
 				auth: auth,
@@ -146,7 +147,7 @@ module.exports = async function ({
 				resource: event,
 				conferenceDataVersion: 1
 			},
-			async (err, response) => {
+			(err, response) => {
 				if (err) return console.log("The API returned an error: " + err);
 
 				const {
@@ -163,14 +164,6 @@ module.exports = async function ({
 					} to ${end.dateTime}, attendees:\n${attendees
 						.map((person) => `🧍 ${person.email}`)
 						.join("\n")} \n 💻 Join conference call link: ${uri}`
-				);
-				const resp = await appointment_histories.update(
-					{ appointmentLink: uri },
-					{
-						where: {
-							id
-						}
-					}
 				);
 				return uri;
 			}

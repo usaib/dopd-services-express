@@ -47,3 +47,30 @@ export const create = async (request, response) => {
 		});
 	}
 };
+
+export const createOnlineAppointment = async (request, response) => {
+	try {
+		const resp = await Service.createOnlineAppointment(request.body);
+		console.log("thaaat is response", resp);
+
+		if (resp.success) {
+			response.status(200).json({
+				message: "Successfully created online appointment",
+				success: true,
+				data: resp
+			});
+		} else {
+			console.log("contro resp", resp);
+			response.status(200).json({
+				message: "failed to Create Online Appointment appointment",
+				success: false,
+				data: resp
+			});
+		}
+	} catch (e) {
+		console.log(e);
+		response.status(400).json({
+			...e
+		});
+	}
+};

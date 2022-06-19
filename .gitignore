@@ -5,4 +5,6 @@ coverage
 yarn-error.log
 client_secret_64977015729-utbs6316i2ihd2k056sv6o2f7d5ffhuh.apps.googleusercontent.com.json
 digitalopd-a9a772c850fc.json
+helpers/client_secret_64977015729-utbs6316i2ihd2k056sv6o2f7d5ffhuh.apps.googleusercontent.com.json
+helpers/digitalopd-a9a772c850fc.json
 token.json

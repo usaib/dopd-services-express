@@ -7,44 +7,9 @@ import { appointment_histories } from "../models";
 const SCOPES = process.env.SCOPES;
 
 dotenv.config();
+const TOKEN_PATH = "token.json";
 
-module.exports = async function ({
-	attendeesEmails = [
-		{ email: "shehzerabbasi621@gmail.com" },
-		{ email: "noors.mah.coll@gmail.com" },
-		{ email: "syedainsharahnaveed@gmail.com" }
-	],
-	event = {
-		summary: "Testing Online Appointment",
-		location: "Virtual / Google Meet",
-		description: "With Doctor Anees Allana",
-		start: {
-			dateTime: "2022-06-05T10:00:00",
-			timeZone: "America/Los_Angeles"
-		},
-		end: {
-			dateTime: "2022-06-05T11:00:00",
-			timeZone: "America/Los_Angeles"
-		},
-		attendees: attendeesEmails,
-		reminders: {
-			useDefault: false,
-			overrides: [
-				{ method: "email", minutes: 24 * 60 },
-				{ method: "popup", minutes: 30 }
-			]
-		},
-		conferenceData: {
-			createRequest: {
-				conferenceSolutionKey: {
-					type: "hangoutsMeet"
-				},
-				requestId: "online-appointment-dopd"
-			}
-		}
-	},
-	id
-}) {
+module.exports = async function ({ attendeesEmails, event, id }) {
 	// Load client secrets from a local file.
 	fs.readFile(process.env.SECRET_FILE, (err, content) => {
 		if (err) return console.log("Error loading client secret file:", err);
@@ -64,11 +29,11 @@ module.exports = async function ({
 		const oAuth2Client = new google.auth.OAuth2(
 			client_id,
 			client_secret,
-			"https://a494-27-96-92-98.ngrok.io"
+			"https://loud-buttons-hang-103-196-161-95.loca.lt/appointment/getToken"
 		);
 
 		// Check if we have previously stored a token.
-		fs.readFile(process.env.TOKEN_PATH, (err, token) => {
+		fs.readFile(TOKEN_PATH, (err, token) => {
 			console.log(err);
 			if (err) return getAccessToken(oAuth2Client, callback);
 			oAuth2Client.setCredentials(JSON.parse(token));

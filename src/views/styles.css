@@ -1,0 +1,49 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .text {
+    font-family: Arial, sans-serif;
+    margin: 3px 0 0 0;
+    font-weight: 400;
+    color: #2a3d53;
+  }
+  .divider {
+    background-color: #0381d1;
+    height: 5px;
+    margin: 20px 0;
+  }
+  .patientInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .info {
+    display: inline-block;
+  }
+  .info::after {
+    content: "";
+    background-color: #2a3d53;
+    height: 2px;
+    width: inherit;
+    display: block;
+  }
+  .medicines {
+    margin-top: 30px;
+    /* display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; */
+  }
+  .medicines div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 10px 0;
+  }
+  .medicines div span {
+  }

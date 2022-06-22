@@ -77,11 +77,13 @@ export const createOnlineAppointment = async (params) => {
 		});
 		params.userEmail = user[0].email;
 	}
-	console.log(params);
+	console.log(params, new Date(params.appointmentTime).toISOString());
 	let attendeesEmails = [
 		{ email: params.doctorEmail },
 		{ email: params.userEmail }
 	];
+
+	// return;
 	let event = {
 		summary: "Testing Online Appointment",
 		location: "Virtual / Google Meet",
@@ -117,6 +119,7 @@ export const createOnlineAppointment = async (params) => {
 			attendeesEmails,
 			event
 		});
+		console.log(data);
 		return {
 			success: true,
 			data: data

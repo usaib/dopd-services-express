@@ -8,6 +8,7 @@ import Appointment from "./src/routes/appointment";
 import diagnosedDisease from "./src/routes/diagnosedDisease";
 import doctor from "./src/routes/doctor";
 import doctorAvailability from "./src/routes/doctorAvailability";
+import embeddedSigning from "./src/routes/embeddedSigning";
 
 dotenv.config();
 require("./src/config/sequelize");
@@ -26,5 +27,6 @@ app.use("/appointment", Appointment);
 app.use("/diagnosedDisease", diagnosedDisease);
 app.use("/doctor", doctor);
 app.use("/doctorAvailability", doctorAvailability);
+app.use("/embeddedSigning", embeddedSigning);
 
 module.exports = app;

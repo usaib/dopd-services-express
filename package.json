@@ -43,7 +43,13 @@
 		"nodemon": "^1.19.0",
 		"os": "^0.1.1",
 		"sequelize": "^5.15.1",
-		"sequelize-cli": "^5.4.0"
+		"sequelize-cli": "^5.4.0",
+		"docusign-admin": "^1.1.0",
+		"docusign-esign": "^5.16.0",
+		"fs-extra": "^6.0.1",
+		"helmet": "^3.18.0",
+		"request": "^2.88.2",
+		"dynamic-html-pdf": "^1.0.4"
 	},
 	"devDependencies": {
 		"babel-jest": "^24.8.0",

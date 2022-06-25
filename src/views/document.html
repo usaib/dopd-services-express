@@ -59,7 +59,7 @@
 		<main style="padding: 0 10px; max-width: 900px; margin: 0 auto">
 			<section class="header">
 				<div>
-					<h2 class="text">Anees Allana</h2>
+					<h2 class="text">{{users.0.doctorName}}</h2>
 					<p class="text" style="font-size: 0.875em">ENT Specialist</p>
 					<p class="text" style="font-size: 0.875em"></p>
 				</div>
@@ -79,7 +79,7 @@
 					>
 						Patient Name:
 					</span>
-					<span class="info">Usaib Khan</span>
+					<span class="info">{{users.0.patientName}}</span>
 				</div>
 				<div>
 					<span
@@ -100,7 +100,9 @@
 			</section>
 			<section class="medicines">
 				<div>
-					<span class="text" style="font-weight: 800"> Paracetamol </span>
+					<span class="text" style="font-weight: 800">
+						{{users.0.medicineName}}</span
+					>
 					<span class="text">twice daily</span>
 				</div>
 				<div>

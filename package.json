@@ -6,7 +6,9 @@
 	"scripts": {
 		"test": "jest",
 		"test:cover": "jest --coverage",
-		"start": "nodemon server.js"
+		"start": "nodemon server.js",
+		"db:migrate": "node_modules/.bin/sequelize db:migrate",
+		"db:seed:all": "node_modules/.bin/sequelize db:seed:all"
 	},
 	"author": "",
 	"license": "ISC",

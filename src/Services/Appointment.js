@@ -119,12 +119,13 @@ export const createOnlineAppointment = async (params) => {
 			attendeesEmails,
 			event
 		});
-		console.log(data);
+		console.log('error',data);
 		return {
 			success: true,
 			data: data
 		};
 	} catch (e) {
+		console.log(e,'from error');
 		return {
 			success: false,
 			data: e

@@ -29,12 +29,12 @@ module.exports = async function ({ attendeesEmails, event, id }) {
 		const oAuth2Client = new google.auth.OAuth2(
 			client_id,
 			client_secret,
-			"https://loud-buttons-hang-103-196-161-95.loca.lt/appointment/getToken"
+			"https://tasty-banks-swim-39-57-250-110.loca.lt/appointment/getToken"
 		);
 
 		// Check if we have previously stored a token.
 		fs.readFile(TOKEN_PATH, (err, token) => {
-			console.log(err);
+			console.log("calender", err);
 			if (err) return getAccessToken(oAuth2Client, callback);
 			oAuth2Client.setCredentials(JSON.parse(token));
 			callback(oAuth2Client, id);

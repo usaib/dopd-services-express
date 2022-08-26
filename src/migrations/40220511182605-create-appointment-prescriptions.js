@@ -8,7 +8,7 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			appointmentId: {
+			appointmentHistoryId: {
 				type: Sequelize.INTEGER,
 				references: {
 					model: "appointment_histories",
@@ -17,7 +17,7 @@ module.exports = {
 				onUpdate: "CASCADE",
 				onDelete: "CASCADE"
 			},
-			medicineId: {
+			medicineInventoryId: {
 				type: Sequelize.INTEGER,
 				references: {
 					model: "medicine_inventories",

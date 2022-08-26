@@ -51,6 +51,13 @@ db.Sequelize = Sequelize;
 // console.log(db);
 db.users.hasMany(db.tokens);
 db.tokens.belongsTo(db.users);
+
+db.appointment_histories.hasMany(db.appointment_prescriptions);
+db.appointment_prescriptions.belongsTo(db.appointment_histories);
+
+db.medicine_inventories.hasMany(db.appointment_prescriptions);
+db.appointment_prescriptions.belongsTo(db.medicine_inventories);
+
 db.users.hasMany(db.appointment_histories);
 db.appointment_histories.belongsTo(db.doctors);
 db.doctors.hasMany(db.appointment_histories);

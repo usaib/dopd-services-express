@@ -3,18 +3,30 @@ const Op = Sequelize.Op;
 
 export const getAllDoctors = async (params) => {
 	try {
+		let where;
+		if (params.filter && params.filter != "All") {
+			where = {
+				imageUrl: {
+					[Op.ne]: null
+				},
+				specialization: params.filter
+			};
+		} else {
+			where = {
+				imageUrl: {
+					[Op.ne]: null
+				}
+			};
+		}
+		console.log(where);
 		const data = await doctors.findAndCountAll({
 			order: [
 				["createdAt", "DESC"],
 				["name", "ASC"]
 			],
+			where: where,
 			offset: params.offset,
-			limit: params.limit,
-			where: {
-				imageUrl: {
-					[Op.ne]: null
-				}
-			}
+			limit: params.limit
 		});
 		return {
 			success: true,

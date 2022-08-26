@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 	const appointment_prescriptions = sequelize.define(
 		"appointment_prescriptions",
 		{
-			appointmentId: {
+			appointmentHistoryId: {
 				type: DataTypes.INTEGER,
 				references: {
 					model: appointment_histories,
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
 				onUpdate: "CASCADE",
 				onDelete: "CASCADE"
 			},
-			medicineId: {
+			medicineInventoryId: {
 				type: DataTypes.INTEGER,
 				references: {
 					model: medicine_inventories,

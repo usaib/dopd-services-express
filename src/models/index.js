@@ -15,9 +15,9 @@ if (config.use_env_variable) {
 } else {
 	sequelize = new Sequelize(config.database, config.username, config.password, {
 		username: "root",
-		password: "root",
+		password: "rootdopd",
 		database: "digital_opd_v3",
-		host: "localhost",
+		host: "database-1.cueibbez2f15.us-east-1.rds.amazonaws.com",
 		dialect: "mysql"
 	});
 }

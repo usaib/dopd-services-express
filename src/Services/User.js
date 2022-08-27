@@ -50,15 +50,18 @@ export const create = async (params) => {
 			.update(params.password)
 			.digest("hex");
 		params.password = reqPass;
+		params.mrNumber = "ABC-" + Math.floor(100000 + Math.random() * 900000);
 		const Users = await users.create({
 			...params
 		});
 
 		return {
+			message: "User Created Successfully",
 			success: true,
 			data: Users.id
 		};
 	} catch (error) {
+		console.log(error);
 		return {
 			success: false,
 			data: error

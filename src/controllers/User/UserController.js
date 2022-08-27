@@ -1,18 +1,20 @@
-import { user } from "../../models";
+import { users } from "../../models";
 const Service = require("../../Services/User");
 
 export const create = async (request, response) => {
+	console.log(request.body);
 	try {
 		const { email } = request.body;
 
-		const users = await user.findOne({
+		const user = await users.findOne({
 			where: { email }
 		});
-		if (users) {
+		if (user) {
+			console.log(user);
 			response.status(200).json({
 				message: "User Already Exists",
 				success: false,
-				data: users
+				data: user
 			});
 			return;
 		}
@@ -32,6 +34,7 @@ export const create = async (request, response) => {
 			});
 		}
 	} catch (e) {
+		console.log(e);
 		response.status(400).json({
 			...e
 		});
@@ -67,14 +70,14 @@ export const getProfile = async (request, response) => {
 		const resp = await Service.getProfile(request.body);
 		if (resp.success) {
 			response.status(200).json({
-				message: "Successfully get user",
+				message: "Successfully get users",
 				success: true,
 				data: resp
 			});
 		} else {
 			console.log("contro resp", resp);
 			response.status(200).json({
-				message: "failed to get that user",
+				message: "failed to get that users",
 				success: false,
 				data: resp
 			});
@@ -114,7 +117,7 @@ export const update = async (request, response) => {
 		const { email } = request.body;
 		let users;
 		if (email) {
-			const users = await user.findOne({
+			const users = await users.findOne({
 				where: { email }
 			});
 		}

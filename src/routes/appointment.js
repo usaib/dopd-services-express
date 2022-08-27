@@ -10,6 +10,8 @@ const router = express.Router();
 //= ===============================
 
 router.post("/getAppointments", AppointmentController.getAppointments);
+router.post("/getUserAppointments", AppointmentController.getUserAppointments);
+
 router.post("/create", AppointmentController.create);
 router.post("/update", AppointmentController.update);
 

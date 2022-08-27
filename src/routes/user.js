@@ -34,7 +34,7 @@ const upload = multer({ storage });
 
 router.post("/getAllUsers", UserController.allUsers);
 router.post("/me", UserController.getProfile);
-router.post("/createUser", apiAuth, UserController.create);
+router.post("/createUser", UserController.create);
 router.post("/deleteUser", apiAuth, UserController.remove);
 router.post("/updateUser", apiAuth, UserController.update);
 router.post("/pdf", (req, res) => {

@@ -31,6 +31,38 @@ export const getAppointments = async (params) => {
 		};
 	}
 };
+
+export const getUserAppointments = async (params) => {
+	try {
+		const data = await appointment_histories.findAndCountAll({
+			order: [["createdAt", "DESC"]],
+			offset: params.offset,
+			limit: params.limit,
+			include: [
+				{
+					model: doctors,
+					attributes: ["name", "specialization"]
+				},
+				{
+					model: users,
+					attributes: ["name"]
+				}
+			],
+			where: {
+				userId: params.userId
+			}
+		});
+		return {
+			success: true,
+			data: data
+		};
+	} catch (error) {
+		return {
+			success: false,
+			data: error
+		};
+	}
+};
 export const create = async (params) => {
 	try {
 		if (params.doctorName) {

@@ -5,6 +5,7 @@ import cors from "cors";
 import Auth from "./src/routes/auth";
 import User from "./src/routes/user";
 import Inventory from "./src/routes/inventory";
+import Prescription from "./src/routes/prescription";
 import Appointment from "./src/routes/appointment";
 import diagnosedDisease from "./src/routes/diagnosedDisease";
 import doctor from "./src/routes/doctor";
@@ -24,7 +25,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/auth", Auth);
 app.use("/inventory", Inventory);
-
+app.use("/prescription", Prescription);
 app.use("/user", User);
 app.use("/appointment", Appointment);
 app.use("/diagnosedDisease", diagnosedDisease);

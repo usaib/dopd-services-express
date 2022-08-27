@@ -12,7 +12,7 @@ export const getAppointments = async (params) => {
 			include: [
 				{
 					model: doctors,
-					attributes: ["name"]
+					attributes: ["name", "specialization"]
 				},
 				{
 					model: users,
@@ -119,13 +119,13 @@ export const createOnlineAppointment = async (params) => {
 			attendeesEmails,
 			event
 		});
-		console.log('error',data);
+		console.log("error", data);
 		return {
 			success: true,
 			data: data
 		};
 	} catch (e) {
-		console.log(e,'from error');
+		console.log(e, "from error");
 		return {
 			success: false,
 			data: e

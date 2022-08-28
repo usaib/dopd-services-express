@@ -16,6 +16,27 @@ module.exports = {
 			"doctors",
 			[
 				{
+					name: "Anees Allana",
+					email: "anees@gmail.com",
+					specialization: "ENT Specialist",
+					qualification: "MBBS FCPS",
+					experience: "12",
+					rating: "4.5",
+					gender: "Male",
+					imageUrl:
+						"https://health.hamariweb.com/Images/DocImages/Dr-Anis-A-Allana_65514.jpeg",
+					createdAt: new Date(),
+					updatedAt: new Date()
+				},
+				{
+					name: "Smart",
+					email: "admin@dop.com",
+					specialization: "MDT",
+					qualification: "MDT",
+					createdAt: new Date(),
+					updatedAt: new Date()
+				},
+				{
 					name: "Salman Mansoor",
 					email: "salmanmansoor@gmail.com",
 					specialization: "Skin Specialist",
